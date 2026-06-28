@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>05 운영자 가이드</title>
+<style>
+/* 광명 소셜이코노미 헌터즈 — 공용 디자인 토큰 v0.2
+   모든 산출물이 이 팔레트·폰트·컴포넌트를 공유한다. 한 곳에서 바꾸면 전체 일관. */
+:root{
+  --ink:#1c2620;        /* 본문 잉크 */
+  --moss:#2f6b4f;       /* 주색 (상생 녹색) */
+  --moss-dk:#1f4a37;    /* 헤더 짙은 녹색 */
+  --gold:#b08a3e;       /* 강조·eyebrow 금색 */
+  --parch:#f5f0e4;      /* 카드 배경 (양피지) */
+  --parch-dk:#e9dfc9;   /* th 배경 */
+  --line:#cabe9f;       /* 테두리선 */
+  --danger:#9a4a2f;     /* 경고·정답 */
+  --ok:#2f6b4f;
+  /* 8부스 색 (고정) */
+  --b1:#8a6d3b; --b2:#2f6b4f; --b3:#3a6ea5; --b4:#7a5aa6;
+  --b5:#b06a3a; --b6:#4a7c59; --b7:#6b4a2f; --b8:#1f4a37;
+}
+*{box-sizing:border-box}
+body{
+  font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
+  color:var(--ink); line-height:1.6; margin:0;
+  font-size:10.3pt; background:#fff;
+}
+.page{max-width:190mm;margin:0 auto;padding:13mm}
+h1,h2,h3{color:var(--moss-dk);line-height:1.25}
+h1{font-size:24pt;margin:.2em 0 .3em}
+h2{font-size:15pt;margin:1.2em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:12pt;margin:1em 0 .4em}
+.eyebrow{font-size:9.5pt;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+/* 헤더 */
+.kit-header{
+  background:radial-gradient(circle at 50% 25%, rgba(176,138,62,.18), transparent 55%), var(--moss-dk);
+  color:#fff;padding:26px 28px;border-radius:12px;margin-bottom:18px
+}
+.kit-header h1{color:#fff;margin:0}
+.kit-header .sub{color:#e9dfc9;margin-top:6px;font-size:10.5pt}
+/* 경고 띠 (정답 포함) */
+.lock-band{
+  position:sticky;top:0;z-index:50;
+  background:var(--danger);color:#fff;text-align:center;
+  font-weight:700;padding:8px;letter-spacing:.04em;font-size:10pt;
+  border-radius:6px;margin-bottom:14px
+}
+/* 부스 뱃지 */
+.badge{display:inline-block;padding:3px 11px;border-radius:999px;color:#fff;font-weight:700;font-size:9.5pt}
+/* 박스류 */
+.story-box{background:var(--parch-dk);border-left:4px solid var(--gold);padding:12px 15px;border-radius:0 8px 8px 0;margin:10px 0}
+.answer-box{border:2px solid var(--danger);background:#fdf3ef;color:var(--danger);font-weight:700;padding:10px 14px;border-radius:8px;margin:8px 0}
+.reward-box{background:var(--moss);color:#fff;padding:10px 14px;border-radius:8px;margin:8px 0}
+.note{background:#fffef7;border:1px dashed var(--line);padding:10px 13px;border-radius:8px;margin:8px 0;font-size:9.7pt}
+.callout{background:#eef5f0;border:1px solid var(--moss);border-radius:8px;padding:11px 14px;margin:10px 0}
+/* 테이블 */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:9.8pt}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--parch-dk);color:var(--moss-dk);font-weight:700}
+td.fill{background:#fffef9;height:9mm}
+td.center,th.center{text-align:center}
+.ans{color:var(--danger);font-weight:800;letter-spacing:.06em}
+/* 미션 steps */
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+.steps li{counter-increment:s;position:relative;padding:8px 8px 8px 38px;border-bottom:1px dashed var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:6px;top:7px;width:22px;height:22px;background:var(--moss);color:#fff;border-radius:50%;text-align:center;line-height:22px;font-weight:700;font-size:9.5pt}
+/* 모서리 장식 (카드) */
+.card{position:relative;background:var(--parch);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+.card::before,.card::after{content:"";position:absolute;width:18px;height:18px;border-color:var(--gold);border-style:solid}
+.card::before{top:8px;left:8px;border-width:2px 0 0 2px}
+.card::after{bottom:8px;right:8px;border-width:0 2px 2px 0}
+/* 푸터 검증범위 */
+.scope{margin-top:22px;border-top:1px solid var(--line);padding-top:9px;font-size:8.3pt;color:#6b6452}
+.scope b{color:var(--moss-dk)}
+/* 인쇄 */
+@media print{
+  body{font-size:10pt}
+  .page{padding:0}
+  .no-print{display:none!important}
+  .lock-band{position:static}
+  .pb{page-break-after:always}
+  a{color:inherit;text-decoration:none}
+}
+@page{size:A4;margin:13mm}
+
+</style>
+<style></style></head>
+<body><div class="page"><div class="lock-band">🔒 운영자 전용 · 학생 배포 금지</div><div class="kit-header"><div class="eyebrow">02 · 운영 인쇄물 · 운영자 전용</div>
+<h1>🔒 운영자 가이드</h1><div class="sub">광명 소셜이코노미 헌터즈 — 8부스 운영 매뉴얼</div></div>
+<h2>① 🔒 정답값표 (SSOT)</h2>
+<table><thead><tr><th class="center">부스</th><th class="center">정답</th><th>메커니즘</th></tr></thead><tbody><tr><td class="center"><span class="badge" style="background:#8a6d3b">1부 · 단어 빈도</span></td><td class="center"><span class="ans">323</span></td><td>텍스트 패턴 계수</td></tr><tr><td class="center"><span class="badge" style="background:#2f6b4f">2부 · 비례식</span></td><td class="center"><span class="ans">3691</span></td><td>비례 계산 · 저울 균형</td></tr><tr><td class="center"><span class="badge" style="background:#3a6ea5">3부 · 거울 대칭</span></td><td class="center"><span class="ans">2058</span></td><td>좌우 반전 가공</td></tr><tr><td class="center"><span class="badge" style="background:#7a5aa6">4부 · 한붓그리기+합산</span></td><td class="center"><span class="ans">580</span></td><td>오일러 경로 · 합산</td></tr><tr><td class="center"><span class="badge" style="background:#b06a3a">5부 · 문해 제거</span></td><td class="center"><span class="ans">4762</span></td><td>권한 기반 정보 선별 (제거형)</td></tr><tr><td class="center"><span class="badge" style="background:#4a7c59">6부 · 부피+합산</span></td><td class="center"><span class="ans">200</span></td><td>부피 계산 · 합산</td></tr><tr><td class="center"><span class="badge" style="background:#6b4a2f">7부 · 순서·정렬</span></td><td class="center"><span class="ans">31452</span></td><td>위상정렬 (인과 순서 복원)</td></tr></tbody></table>
+<div class="answer-box">🏛️ <b>8부 통합 — 자라라 센터</b><br>
+· 최종 금고 <b>실제 입력코드 = 91</b> &nbsp;(체크섬: 7부스 답의 모든 자릿수 합 8+19+15+13+19+2+15 = 91)<br>
+· 도장판 <b>'상생 지수' = 22</b> &nbsp;(의미수: 각 답 첫째자리 합 3+3+2+5+4+2+3 = 22) — <b>표시 전용, 입력하지 않음</b></div>
+<div class="note">🚨 <b>가장 중요</b>: 체크섬 91과 의미수 22는 완전 독립. 절대 산술로 연결 금지 (M-034 AGG-5). 학생이 22를 금고에 넣으려 하면 "그건 화면에 보여주는 상생 지수예요. 금고엔 정산판 검증값(91)을." 으로 안내.</div>
+<h2>② 시간 배분</h2>
+<div class="callout">총 시간은 회차별 현장 측정(미검증). 권장: 부스당 8~12분 + 8부 통합 10분 + 도입/디브리핑. 부스 순회식이므로 팀별 시차 운영 가능.</div>
+<h2>③ 도입 스크립트</h2>
+<div class="story-box">"여러분은 광명의 상생을 회복하는 <b>소셜이코노미 헌터즈</b>입니다. 8개 현장이 위기에 빠졌어요. 각 현장의 문제를 수학으로 풀면 스탬프를 얻고,
+마지막 자라라 센터에서 흩어진 답이 하나로 모입니다. <b>혼자선 못 풀어요 — 함께라야 열립니다.</b> 자, 첫 번째 동굴로!"</div>
+<h2>④ 개입 전략·힌트 타이밍</h2>
+<div class="note">막힌 지 ~5분 후 ①개념 힌트, +3분 후 ②절차 힌트, 종료 임박 시에만 ③직접 제시. 힌트 카드(02)를 봉투에서 단계별로.</div>
+<h2>⑤ 부스별 문제 상황 대응</h2>
+<table><thead><tr><th class="center">부스</th><th>운영 메모 · 대응</th></tr></thead><tbody><tr><td class="center">1부</td><td style="font-size:9.3pt">· UV펜은 연출(답 생성 필수 아님). 틀려도 물리 신호 없음 → '다시 천천히 세어볼까요?' 유도.<br>· 협력·연대 둘 다 3번이라 헷갈림 → 순서(협력 먼저) 강조.</td></tr><tr><td class="center">2부</td><td style="font-size:9.3pt">· 강응결: 비례값=저울 균형점. 틀리면 저울 기움. 암산만 하려 하면 저울 사용 권유.<br>· ③ 양파는 답이 커지는 문제(9kg). 소요 8~12분(미검증).</td></tr><tr><td class="center">3부</td><td style="font-size:9.3pt">· 최상 응결: 비추는 몸짓이 곧 답. 머리로 뒤집으려는 학생 많음 → '직접 거울에.'<br>· ⚠ 인쇄 전 실제 거울로 2058 가독성 검수. 거울 청결·조명 충분.</td></tr><tr><td class="center">4부</td><td style="font-size:9.3pt">· 중응결·선회: 걷기→긋기로 후퇴. 경로 맞는데 덧셈 틀리는 경우 많음 → 덧셈 함께 확인.<br>· 역 누락·중복 → 지나간 역 표시하며 진행.</td></tr><tr><td class="center">5부</td><td style="font-size:9.3pt">· 제거형(8부스 유일): 가짜를 걷어냄. 가짜 카드는 '권한 없는 주장'(정당한 오도).<br>· 다 더하려 하면 → 규칙 현판으로 되돌림. 틀려도 물리 신호 없음 → '규칙 다시 볼까요?'</td></tr><tr><td class="center">6부</td><td style="font-size:9.3pt">· 강응결·수직결합: 부피→도시구원. 구현의존 높음 → 모래·탱크·게이지 점검 중요.<br>· π 쓰려는 학생엔 '밑면적이 이미 주어졌어요.' 한 나무 빼고 더하기 주의.</td></tr><tr><td class="center">7부</td><td style="font-size:9.3pt">· 강응결·climactic: 추론한 순서=엮은 배열=코드. 추상도 높음 → 막히면 시작점(양전) 짚기.<br>· 선후 못 잡으면 '땅 조사→등급?' 인과 유도. decoy 목간 1~2점은 후반 긴장용.</td></tr></tbody></table>
+<h2>⑥ 디지털 백업</h2>
+<div class="note">교구 고장 시: 각 부스 문항을 종이/화면으로 대체 제시. 거울(3부)·저울(2부)·모래탱크(6부)는 물리 응결이 핵심이라 가급적 실물 유지. 부득이하면 답만 확인하는 방식으로 운영(응결 등급 하락 감수).</div>
+<h2>⑦ 안전 점검</h2>
+<div class="note">거울 파손·UV펜 눈 직사 주의·저울 추 낙하·모래 흩날림 주의. 부스 동선에 걸림 없는지 사전 확인. 상세는 18 안전 점검 일지.</div>
+<h2>⑧ 디브리핑</h2>
+<div class="callout">"오늘 어느 부스가 가장 어려웠나요? 왜 혼자선 못 풀고 함께라야 했을까요? 8부의 상생 지수 22는 한 부스만 빠져도 안 나와요 — 그게 '상생'의 뜻이에요."</div>
+<h2>⑨ 평가 루브릭 (간이)</h2>
+<table><thead><tr><th>관점</th><th class="center">상</th><th class="center">중</th><th class="center">하</th></tr></thead><tbody>
+<tr><td>수학적 풀이</td><td class="center">스스로 도출</td><td class="center">힌트로 도출</td><td class="center">직접 제시 필요</td></tr>
+<tr><td>협력</td><td class="center">역할 분담·소통 활발</td><td class="center">부분 협력</td><td class="center">개별 활동 위주</td></tr>
+<tr><td>비판적 사고(5부)</td><td class="center">규칙으로 선별</td><td class="center">힌트 후 선별</td><td class="center">전부 수용</td></tr>
+</tbody></table>
+<h2>⑩ 관찰 체크리스트</h2>
+<div class="note">☐ 각 부스 정답 도출 ☐ 역할 분담 ☐ 저울/거울/모래 등 교구 실제 사용 ☐ 5부 레드헤링 판별 ☐ 7부 순서 추론 ☐ 8부 정산판 자가검증 이해</div>
+<div class="scope"><b>검증 범위 —</b> 광명 소셜이코노미 헌터즈 운영 정본 v1.0.1 기반 3층 인스턴스(운영자) 산출물.
+실제 체감 난이도·소요 시간·안전은 파일럿에서 측정·보정하며, 현장 판단이 항상 우선합니다.</div>
+</div></body></html>

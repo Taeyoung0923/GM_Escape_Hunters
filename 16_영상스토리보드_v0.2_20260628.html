@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>16 영상 스토리보드</title>
+<style>
+/* 광명 소셜이코노미 헌터즈 — 공용 디자인 토큰 v0.2
+   모든 산출물이 이 팔레트·폰트·컴포넌트를 공유한다. 한 곳에서 바꾸면 전체 일관. */
+:root{
+  --ink:#1c2620;        /* 본문 잉크 */
+  --moss:#2f6b4f;       /* 주색 (상생 녹색) */
+  --moss-dk:#1f4a37;    /* 헤더 짙은 녹색 */
+  --gold:#b08a3e;       /* 강조·eyebrow 금색 */
+  --parch:#f5f0e4;      /* 카드 배경 (양피지) */
+  --parch-dk:#e9dfc9;   /* th 배경 */
+  --line:#cabe9f;       /* 테두리선 */
+  --danger:#9a4a2f;     /* 경고·정답 */
+  --ok:#2f6b4f;
+  /* 8부스 색 (고정) */
+  --b1:#8a6d3b; --b2:#2f6b4f; --b3:#3a6ea5; --b4:#7a5aa6;
+  --b5:#b06a3a; --b6:#4a7c59; --b7:#6b4a2f; --b8:#1f4a37;
+}
+*{box-sizing:border-box}
+body{
+  font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
+  color:var(--ink); line-height:1.6; margin:0;
+  font-size:10.3pt; background:#fff;
+}
+.page{max-width:190mm;margin:0 auto;padding:13mm}
+h1,h2,h3{color:var(--moss-dk);line-height:1.25}
+h1{font-size:24pt;margin:.2em 0 .3em}
+h2{font-size:15pt;margin:1.2em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:12pt;margin:1em 0 .4em}
+.eyebrow{font-size:9.5pt;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+/* 헤더 */
+.kit-header{
+  background:radial-gradient(circle at 50% 25%, rgba(176,138,62,.18), transparent 55%), var(--moss-dk);
+  color:#fff;padding:26px 28px;border-radius:12px;margin-bottom:18px
+}
+.kit-header h1{color:#fff;margin:0}
+.kit-header .sub{color:#e9dfc9;margin-top:6px;font-size:10.5pt}
+/* 경고 띠 (정답 포함) */
+.lock-band{
+  position:sticky;top:0;z-index:50;
+  background:var(--danger);color:#fff;text-align:center;
+  font-weight:700;padding:8px;letter-spacing:.04em;font-size:10pt;
+  border-radius:6px;margin-bottom:14px
+}
+/* 부스 뱃지 */
+.badge{display:inline-block;padding:3px 11px;border-radius:999px;color:#fff;font-weight:700;font-size:9.5pt}
+/* 박스류 */
+.story-box{background:var(--parch-dk);border-left:4px solid var(--gold);padding:12px 15px;border-radius:0 8px 8px 0;margin:10px 0}
+.answer-box{border:2px solid var(--danger);background:#fdf3ef;color:var(--danger);font-weight:700;padding:10px 14px;border-radius:8px;margin:8px 0}
+.reward-box{background:var(--moss);color:#fff;padding:10px 14px;border-radius:8px;margin:8px 0}
+.note{background:#fffef7;border:1px dashed var(--line);padding:10px 13px;border-radius:8px;margin:8px 0;font-size:9.7pt}
+.callout{background:#eef5f0;border:1px solid var(--moss);border-radius:8px;padding:11px 14px;margin:10px 0}
+/* 테이블 */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:9.8pt}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--parch-dk);color:var(--moss-dk);font-weight:700}
+td.fill{background:#fffef9;height:9mm}
+td.center,th.center{text-align:center}
+.ans{color:var(--danger);font-weight:800;letter-spacing:.06em}
+/* 미션 steps */
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+.steps li{counter-increment:s;position:relative;padding:8px 8px 8px 38px;border-bottom:1px dashed var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:6px;top:7px;width:22px;height:22px;background:var(--moss);color:#fff;border-radius:50%;text-align:center;line-height:22px;font-weight:700;font-size:9.5pt}
+/* 모서리 장식 (카드) */
+.card{position:relative;background:var(--parch);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+.card::before,.card::after{content:"";position:absolute;width:18px;height:18px;border-color:var(--gold);border-style:solid}
+.card::before{top:8px;left:8px;border-width:2px 0 0 2px}
+.card::after{bottom:8px;right:8px;border-width:0 2px 2px 0}
+/* 푸터 검증범위 */
+.scope{margin-top:22px;border-top:1px solid var(--line);padding-top:9px;font-size:8.3pt;color:#6b6452}
+.scope b{color:var(--moss-dk)}
+/* 인쇄 */
+@media print{
+  body{font-size:10pt}
+  .page{padding:0}
+  .no-print{display:none!important}
+  .lock-band{position:static}
+  .pb{page-break-after:always}
+  a{color:inherit;text-decoration:none}
+}
+@page{size:A4;margin:13mm}
+
+</style>
+<style>.fgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px} .frame{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--parch)} .screen{background:#1c2620;color:#e9dfc9;border-radius:6px;padding:18px 10px;text-align:center;font-size:9pt;margin-bottom:6px;min-height:60px} .sub{font-size:8.6pt;color:#6b6452;margin-top:4px}</style></head>
+<body><div class="page"><div class="kit-header"><div class="eyebrow">03 · 연출 · 제작 사양</div>
+<h1>🎥 영상 스토리보드</h1><div class="sub">인트로(약40초)·엔딩(약30초) — 외주 제작 사양까지</div></div>
+<h2>① 인트로 (약 40초)</h2><div class="fgrid"><div class="frame">
+<div class="screen">🎞️ 광명 전경 위로 그림자가 드리움</div>
+<div style="font-size:8.8pt"><b>INTRO-1</b> · 사운드: 불안한 저음</div>
+<div class="sub">자막: "광명의 8개 현장이 위기에 빠졌다…"</div></div><div class="frame">
+<div class="screen">🎞️ 8개 현장 아이콘이 흩어짐</div>
+<div style="font-size:8.8pt"><b>INTRO-2</b> · 사운드: 흩어지는 효과음</div>
+<div class="sub">자막: "흩어진 실마리들."</div></div><div class="frame">
+<div class="screen">🎞️ 헌터즈 엠블럼 등장</div>
+<div style="font-size:8.8pt"><b>INTRO-3</b> · 사운드: 희망의 테마</div>
+<div class="sub">자막: "상생을 회복할 헌터즈, 출동!"</div></div></div>
+<h2>② 엔딩 (약 30초)</h2><div class="fgrid"><div class="frame">
+<div class="screen">🎞️ 8개 스탬프가 하나로 모임</div>
+<div style="font-size:8.8pt"><b>END-1</b> · 사운드: 모이는 효과음</div>
+<div class="sub">자막: "흩어진 8개가 하나로."</div></div><div class="frame">
+<div class="screen">🎞️ 도장판 '상생 지수 22' 점등</div>
+<div style="font-size:8.8pt"><b>END-2</b> · 사운드: 웅장한 스팅어</div>
+<div class="sub">자막: "함께라야 열린다."</div></div><div class="frame">
+<div class="screen">🎞️ 광명에 빛이 돌아옴</div>
+<div style="font-size:8.8pt"><b>END-3</b> · 사운드: 따뜻한 마무리</div>
+<div class="sub">자막: "상생이 도시를 살렸다."</div></div></div>
+<h2>③ 제작 사양</h2>
+<table><thead><tr><th>항목</th><th>사양</th></tr></thead><tbody>
+<tr><td>길이</td><td>인트로 ~40초, 엔딩 ~30초</td></tr>
+<tr><td>해상도</td><td>1920×1080 (FHD), 16:9</td></tr>
+<tr><td>스타일</td><td>밝은 일러스트/모션그래픽, 초등 친화</td></tr>
+<tr><td>자막</td><td>큰 글씨·고대비, 한글</td></tr>
+<tr><td>도구</td><td>모션그래픽 외주 또는 템플릿 기반 제작</td></tr>
+</tbody></table>
+<h2>④ 영상 없이 운영 백업</h2>
+<div class="note">영상 미준비 시: 도입 스크립트(09 대본 S1)와 디브리핑 멘트로 대체. 영상은 몰입 보조이며 게임 진행의 필수 요소가 아님.</div>
+<div class="scope"><b>검증 범위 —</b> 광명 소셜이코노미 헌터즈 운영 정본 v1.0.1 기반 3층 인스턴스(제작 사양) 산출물.
+실제 체감 난이도·소요 시간·안전은 파일럿에서 측정·보정하며, 현장 판단이 항상 우선합니다.</div>
+</div></body></html>
